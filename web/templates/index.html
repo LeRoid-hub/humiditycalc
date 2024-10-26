@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Humidity Calculator</title>
+	</head>
+	<body>
+		<h1>Humidity Calculator</h1>
+		<p>Calculate absolute humidity in g/m³ given temperature in Celsius and relative humidity percentage.</p>
+		<form action="/">
+			<label for="temp">Temperature (°C):</label>
+			<input type="text" id="temp" name="temp" required>
+			<br>
+			<label for="rh">Relative Humidity (%):</label>
+			<input type="text" id="rh" name="rh" required>
+			<br>
+			<button type="submit">Calculate</button>
+		</form>
+        {{ if .AbsoluteHumidity }}
+            <p>Absolute Humidity: {{ .AbsoluteHumidity }} g/m³</p>
+        {{ end }}
+	</body>
+</html>
