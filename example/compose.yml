@@ -1,0 +1,10 @@
+services:
+    humiditycalc:
+        restart: always
+        container_name: humiditycalc2
+        image: ghcr.io/leroid-hub/humiditycalc:latest
+        environment:
+          OPENWEATHERMAP_API_KEY: "YOURAPIKEY"
+          LATITUDE: "52.51"
+          LONGITUDE: "13.404"
+          MODE: "BOTH"
