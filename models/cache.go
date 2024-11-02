@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -13,7 +12,6 @@ type WeatherCache struct {
 }
 
 func (w *WeatherCache) IsExpired() bool {
-	fmt.Println(time.Since(w.timestamp), time.Duration(w.duration)*time.Second)
 	return time.Since(w.timestamp) > time.Duration(w.duration)*time.Second
 }
 

@@ -5,12 +5,12 @@ import (
 	"os"
 	"strings"
 
+	"github.com/LeRoid-hub/humiditycalc/configs"
 	"github.com/LeRoid-hub/humiditycalc/server"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	env := loadEnv()
+	env := configs.Load()
 	if val, ok := env["MODE"]; ok {
 		if strings.ToLower(val) == "both" {
 			checkEnv(env)
@@ -26,20 +26,6 @@ func main() {
 		// calc.Run()
 		server.Run(env)
 	}
-}
-
-func loadEnv() map[string]string {
-	var env map[string]string
-	env, err := godotenv.Read()
-	if err != nil {
-		fmt.Println("Error loading .env file: ", err)
-		os.Exit(1)
-	}
-	if len(env) == 0 {
-		fmt.Println(".env file is empty")
-		os.Exit(1)
-	}
-	return env
 }
 
 func checkEnv(env map[string]string) {

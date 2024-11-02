@@ -61,16 +61,13 @@ func Run(env map[string]string) {
 			// Get Weather data
 			humidity, temperature := internal.Weather(env)
 
-			// Calculate absolute weather humidity
-			absoluteWeatherHumidity = internal.AbsoluteHumidity(temperature, humidity)
-
 			// Update cache
 			cacheWeather.SetData(humidity, temperature)
-		} else {
-			// Use cached data
-			humidity, temperature := cacheWeather.GetData()
-			absoluteWeatherHumidity = internal.AbsoluteHumidity(temperature, humidity)
 		}
+
+		// Use cached data
+		humidity, temperature = cacheWeather.GetData()
+		absoluteWeatherHumidity = internal.AbsoluteHumidity(temperature, humidity)
 
 		// Create response
 		WData := WeatherData{Temperature: FormatFloat(temperature, 2), RelativeHumidity: FormatFloat(humidity, 4), AbsoluteHumidity: FormatFloat(absoluteWeatherHumidity, 4)}
