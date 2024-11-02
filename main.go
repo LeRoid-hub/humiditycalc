@@ -14,14 +14,17 @@ func main() {
 	if val, ok := env["MODE"]; ok {
 		if strings.ToLower(val) == "both" {
 			checkEnv(env)
-			server.Run()
+			server.Run(env)
 		} else if strings.ToLower(val) == "weather" {
 			checkEnv(env)
 			// weather.Run()
 		} else if strings.ToLower(val) == "calc" {
 			// calc.Run()
-			server.Run()
+			server.Run(env)
 		}
+	} else {
+		// calc.Run()
+		server.Run(env)
 	}
 }
 
@@ -42,7 +45,6 @@ func loadEnv() map[string]string {
 func checkEnv(env map[string]string) {
 	// Is there an API key for openweathermap?
 	if val, ok := env["OPENWEATHERMAP_API_KEY"]; ok {
-		fmt.Println(val)
 		if val == "" {
 			print("OPENWEATHERMAP_API_KEY is not set")
 			os.Exit(1)
