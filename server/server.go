@@ -12,7 +12,7 @@ type result struct {
 	AbsoluteHumidity float64
 }
 
-// StartServer starts the HTTP server.
+// Run starts the HTTP server.
 func Run() {
 	tmpl := template.Must(template.ParseFiles("./web/templates/index.html"))
 
