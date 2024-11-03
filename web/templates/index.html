@@ -14,16 +14,16 @@
 			<br>
 			<button type="submit">Calculate</button>
 		</form>
-
+  {{ if .AbsoluteHumidity }}
+			<h2>Calculated Absolute Humidity</h2>
+   <p>Absolute Humidity: {{ .AbsoluteHumidity }} g/m³</p>
+  {{ end }}
 		{{ if .WeatherData }}
 			<h2>Weather Data</h2>
 			<p>Temperature: {{ .WeatherData.Temperature }}°C</p>
 			<p>Relative Humidity: {{ .WeatherData.RelativeHumidity }}%</p>
 			<p>Absolute Humidity: {{ .WeatherData.AbsoluteHumidity }} g/m³</p>
 		{{ end }}
-        {{ if .AbsoluteHumidity }}
-			<h2>Calculated Absolute Humidity</h2>
-            <p>Absolute Humidity: {{ .AbsoluteHumidity }} g/m³</p>
-        {{ end }}
+
 	</body>
 </html>
