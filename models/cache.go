@@ -19,7 +19,7 @@ func (w *WeatherCache) SetData(humidity float64, temperature float64) {
 	w.Humidity = humidity
 	w.Temperature = temperature
 	w.timestamp = time.Now()
-	w.duration = 60
+	w.duration = 300
 }
 
 func (w *WeatherCache) GetData() (float64, float64) {
