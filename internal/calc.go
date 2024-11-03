@@ -22,5 +22,5 @@ func AbsoluteHumidity(tempCelsius, relativeHumidity float64) float64 {
 	// Calculate absolute humidity
 	absoluteHumidity := (relativeHumidity / 100) * saturationVaporPressure * Mw / (R * tempKelvin)
 
-	return absoluteHumidity
+	return absoluteHumidity * 100
 }
