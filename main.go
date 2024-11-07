@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/LeRoid-hub/humiditycalc/configs"
 	"github.com/LeRoid-hub/humiditycalc/server"
