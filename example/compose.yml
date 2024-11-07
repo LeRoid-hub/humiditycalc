@@ -3,6 +3,8 @@ services:
         restart: always
         container_name: humiditycalc2
         image: ghcr.io/leroid-hub/humiditycalc:latest
+        ports:
+            - 80:8080
         environment:
           OPENWEATHERMAP_API_KEY: "YOURAPIKEY"
           LATITUDE: "52.51"
