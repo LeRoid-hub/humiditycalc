@@ -22,4 +22,6 @@ func main() {
 			// calc.Run()
 		default:
 			server.Run(env)
+	}
+}
 
