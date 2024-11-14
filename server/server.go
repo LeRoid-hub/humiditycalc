@@ -34,6 +34,10 @@ func Run(env map[string]string) {
 		// Parse query parameters
 		tempCelsius, relativeHumidity := r.URL.Query().Get("temp"), r.URL.Query().Get("rh")
 		if tempCelsius == "" || relativeHumidity == "" {
+			go func(cacheW **models.WeatherCache) {
+				humidity, temperature := internal.Weather(env)
+				(*cacheW).SetData(humidity, temperature)
+			}(&cacheWeather)
 			tmpl.Execute(w, nil)
 			return
 		}
