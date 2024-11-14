@@ -1,0 +1,34 @@
+name: On Pullrequest Test
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize, reopened, closed]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  IMAGE_NAME: leroid-hub/humiditycalc:latest
+  PAT: ${{ secrets.PAT }}
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.23'
+
+    - name: Build
+      run: go build -v ./...
+    - name: Actions Ntfy
+      run: |
+        curl \
+          -u ${{ secrets.NTFY_CRED }} \
+          -H "Title: Github Pull Request humiditycalc" \
+          -H "Content-Type: text/plain" \
+          -d $'Repo: ${{ github.repository }}\nCommit: ${{ github.sha }} - ${{ github.event.head_commit.message }}\nRef: ${{ github.ref }}\nStatus: ${{ job.status}}' \
+          ${{ secrets.NTFY_URL }}
