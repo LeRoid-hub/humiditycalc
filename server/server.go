@@ -42,6 +42,9 @@ func Run(env map[string]string) {
 			return
 		}
 
+		tempCelsius = strings.Replace(tempCelsius, ",", ".", 1)
+		relativeHumidity = strings.Replace(relativeHumidity, ",", ".", 1)
+
 		// Convert query parameters to float64
 		temp, err := strconv.ParseFloat(tempCelsius, 32)
 		if err != nil {
