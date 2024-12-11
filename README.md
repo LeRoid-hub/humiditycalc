@@ -1,8 +1,26 @@
 # humiditycalc
+
+This service allows you to compare the absolute humidity from indoor and outdoor.
   
-BOTH slow- every req talks to api  
-  
-## ENV  
+## Setup 
+The setup is aimed for docker.
+
+### DOCKER COMPOSE EXAMPLE
+
+```
+services:
+    humiditycalc:
+        restart: always
+        container_name: humiditycalc
+        image: ghcr.io/leroid-hub/humiditycalc:latest
+        environment:
+          OPENWEATHERMAP_API_KEY: "YOURKEY"
+          LATITUDE: "40.07"
+          LONGITUDE: "9.8"
+          MODE: "BOTH"
+```
+
+### ENVIROMENT VARS 
 MODES: CALC, WEATHER, BOTH  
 BOTH is standard  
   
